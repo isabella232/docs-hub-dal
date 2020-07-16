@@ -1,0 +1,29 @@
+site_name: Data Acquisition Layer
+site_description: 'PIXEL Data Acquisition Layer Documentation Hub'
+site_author: 'Marc Despland'
+
+# this allows visualizing content in github as anonympus user without having to log in
+edit_uri: blob/master/docs/
+
+theme: readthedocs
+
+# we will use the same style as for the general PIXEL documentation hub (based on FIWARE and a readthedocs theme)
+extra_css:
+    - css/pixel_a.css
+    - css/pixel_b.css
+    - css/monokai_sublime_.css
+    - css/pigments-monokai.css
+
+repo_url: https://github.com/pixel-ports/docs-hub-dal
+
+pages:
+    - Home: index.md
+    - User's Guide: 'user_guide.md'
+    - Developer's Guide: 'devel_guide.md'
+        
+
+copyright: Apache License 2.0
+
+extra:
+  version: 1.0.0
+  color: 26b3c3
