@@ -161,6 +161,7 @@ curl  -H "X-Auth-Token: default"  http://172.17.0.1:8888/api/images
   - Get a template
   
 When you have chosen the image of your NGSI Agents, you can generate a template to create it
+
 ```
 curl  -H "X-Auth-Token: default"  http://172.17.0.1:8888/api/images/sha256:620877b976447800bc7ce8672d6b688369b429ad77afba0968f20088c8daf8fd/template 
 {
