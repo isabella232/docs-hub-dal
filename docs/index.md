@@ -161,7 +161,8 @@ curl  -H "X-Auth-Token: default"  http://172.17.0.1:8888/api/images
   - Get a template
   
 When you have chosen the image of your NGSI Agents, you can generate a template to create it
-```curl  -H "X-Auth-Token: default"  http://172.17.0.1:8888/api/images/sha256:620877b976447800bc7ce8672d6b688369b429ad77afba0968f20088c8daf8fd/template 
+```
+curl  -H "X-Auth-Token: default"  http://172.17.0.1:8888/api/images/sha256:620877b976447800bc7ce8672d6b688369b429ad77afba0968f20088c8daf8fd/template 
 {
     "name": "/?[a-zA-Z0-9_-]+",
     "image": "pixelh2020/frbodtidesensor:1.0.0",
@@ -225,7 +226,8 @@ When you have chosen the image of your NGSI Agents, you can generate a template 
 
 Change the name of the agent (it will be the name of the container) and adjust the parameters or let their default values. Be sure that your name match the given pattern.
 
-```curl  -X POST -H "X-Auth-Token: default"  http://172.17.0.1:8888/api/ngsiagent -d @- <<EOF
+```
+curl  -X POST -H "X-Auth-Token: default"  http://172.17.0.1:8888/api/ngsiagent -d @- <<EOF
 {
     "name": "/my-agent",
     "image": "pixelh2020/frbodtidesensor:1.0.0",
