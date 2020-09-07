@@ -147,6 +147,8 @@ The swagger file (UI) also describes the models used with this API
 For security purposes, right now you have to docker pull the NGSI Agents images directly on the host. The next version will propose to manage that using the API.
 
 You can request the list of available NGSI Agents images already available on the host with an API call:
+
+
 ```
 curl  -H "X-Auth-Token: default"  http://172.17.0.1:8888/api/images
 [
