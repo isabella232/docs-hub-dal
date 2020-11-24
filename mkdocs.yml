@@ -20,6 +20,7 @@ pages:
     - Home: index.md
     - User's Guide: 'user_guide.md'
     - Developer's Guide: 'devel_guide.md'
+    - NGSI Agents Cookbook: 'ngsiagent_cookbook.md'
         
 
 copyright: Apache License 2.0
