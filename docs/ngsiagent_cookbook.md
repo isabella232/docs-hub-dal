@@ -3,7 +3,7 @@
 ## Requirements
 <div align="justify">
 
-In order to be deployed on a PIXEL Platform using the DAL and to be automatically detected by the Information Hub, NGSI Agents have to fullfill several requirements
+In order to be deployed on a PIXEL Platform using the DAL and to be automatically detected by the Information Hub, NGSI Agents have to fulfill several requirements
 
 * DataModels should be registered
 * URN to identify the Data Source should be defined
@@ -34,11 +34,11 @@ This source ID have to be provided in each entity pushed to Orion using the ```s
 
 ### Declare DataSource in Orion
 
-In order to be automatically imported by Information Hub you need to create 3 objects in Orion ```DataModel```, ```SourceModelRelation``` and ```DataSource``` (always finih by DataSource)
+In order to be automatically imported by Information Hub you need to create 3 objects in Orion ```DataModel```, ```SourceModelRelation``` and ```DataSource``` (always finish by DataSource)
 
 Those objects are describe in the [Developer guide](./devel_guide.md)
 
-If you plan to deploy the agent using the DAL Orchestrtor, let it manage this part.
+If you plan to deploy the agent using the DAL Orchestrator, let it manage this part.
 
 You also can create those objects manually, or using the ```POST register``` api of the DAL Orchestrator
 
@@ -119,7 +119,7 @@ ENTRYPOINT ["/bin/bash"]CMD ["date"]
 
 The API from the Orchestrator is protected with an ```API-KEY```. Its value could be find in the ```secrets``` folder of the PUBLIC host.
 
-The API is not exposed outside the platform, you have to request it directly from the PUBLIC host, or create an SSH tunnel to acces its swagger:
+The API is not exposed outside the platform, you have to request it directly from the PUBLIC host, or create an SSH tunnel to access its swagger:
 
 ```ssh -i <keyfile> -L 127.0.0.1:8088:127.0.0.1:8080 root@xxx.xxx.xxx.xxx```
 
@@ -210,7 +210,7 @@ curl  -H "X-Auth-Token: default"  http://172.17.0.1:8888/api/images/sha256:62087
   - Create the NGSI Agent
 <br/>
 
-Change the name of the agent (it will be the name of the container) and adjust the parameters or let their default values. Be sure that your name match the given pattern.
+Change the name of the agent (it will be the name of the container) and adjust the parameters or let their default values. Be sure that your name matches the given pattern.
 
 
 ```
