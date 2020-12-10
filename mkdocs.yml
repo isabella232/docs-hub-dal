@@ -21,6 +21,7 @@ pages:
     - User's Guide: 'user_guide.md'
     - Developer's Guide: 'devel_guide.md'
     - NGSI Agents Cookbook: 'ngsiagent_cookbook.md'
+    - DAL End 2 End tests: 'pixel-e2e.md'
         
 
 copyright: Apache License 2.0

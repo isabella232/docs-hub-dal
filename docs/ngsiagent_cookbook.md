@@ -1,5 +1,7 @@
 # NGSI Agent CookBook
 
+You can access the [PIXEL End 2 End tests](./pixel-e2e.md) with simple agents and tests.
+
 ## Requirements
 <div align="justify">
 
