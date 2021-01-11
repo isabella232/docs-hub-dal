@@ -127,11 +127,13 @@ ENTRYPOINT ["/bin/bash"]CMD ["date"]
 
 The API from the Orchestrator is protected with an ```API-KEY```. Its value could be find in the ```secrets``` folder of the PUBLIC host.
 
+          root@vm-pixel-public:/opt/pixel/Installation/docker/public/secrets# nano dal.orchestrator.api.token
+
 The API is not exposed outside the platform, you have to request it directly from the PUBLIC host, or create an SSH tunnel to access its swagger:
 
 ```ssh -i <keyfile> -L 127.0.0.1:8088:127.0.0.1:8080 root@xxx.xxx.xxx.xxx```
 
-Then you can access the [swagger](http://127.0.0.1:8088/api-docs)
+Then you can access the [swagger](http://127.0.0.1:8080/api-docs)
 
 In order to be used with the orchestrator, the docker image should be available in the local docker repository. ```docker pull <imagename>````
 
