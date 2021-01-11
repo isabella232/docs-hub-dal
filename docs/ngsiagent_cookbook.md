@@ -157,7 +157,7 @@ For the ping NGSI agent you could get something like this as response:
 ````
 [
   {
-    "id": "sha256:1fd5e06701c1a171d27aea236d65c9070f2be8add8f67a4d12aa33eee97fc3c4",
+    "id": "sha256:081eeee82df7fb0f5526a5eb78028300592f708bc505a4cc50ef7b282b1c8bbc",
     "tag": "pixelh2020/pingtest:0.1"
   }
 ]
@@ -377,7 +377,7 @@ For the ping example, we just take the previous response from the template and c
     {
       "key": "ORION_SERVICEPATH",
       "value": "/GRSKG"
-    },
+    }
   ]
 }
 ```
@@ -385,7 +385,7 @@ For the ping example, we just take the previous response from the template and c
 The result, if everything goes fine, is:
 ```
 {
-  "id": "a7754222dd1a79f44fde0345b3ec5dbf5b1d765d62adb7db98fd4ce7aa7a13ce"
+  "id": "e37609e4dddd20a9d18a5e6feee0fd00590787ba934e4d6b44f40b054ca7bf0c"
 }
 ```
 
