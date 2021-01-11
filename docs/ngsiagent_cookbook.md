@@ -140,7 +140,7 @@ For example, for a test ping NGSI agent:
 
           root@vm-pixel-public:/opt/pixel/Installation# docker pull pixelh2020/pingtest:0.1
 
-You can request the list of available NGSI Agents images already available on the host with an API call:
+You can request the list of available NGSI Agents images already available on the host with an API call (**/images **):
 
 
 ```
@@ -168,7 +168,7 @@ For the ping NGSI agent you could get something like this as response:
 
   - Get a template
 <br/>
-When you have chosen the image of your NGSI Agents, you can generate a template to create it
+When you have chosen the image of your NGSI Agents, you can generate a template to create it (** /images/{id}/template
 
 
 ```
