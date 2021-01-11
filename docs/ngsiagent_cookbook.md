@@ -230,6 +230,57 @@ curl  -H "X-Auth-Token: default"  http://172.17.0.1:8888/api/images/sha256:62087
     ]
 }
 ```
+for the ping examaple, you may get something like this as repsonse:
+
+```
+{
+  "name": "/?[a-zA-Z0-9_-]+",
+  "image": "pixelh2020/pingtest:0.1",
+  "type": "scheduled",
+  "scheduled": "1 * * * *",
+  "datasources": [
+    "urn:pixel:DataSource:Ping"
+  ],
+  "datamodels": [
+    "/Pixel/Ping/schema.json"
+  ],
+  "environment": [
+    {
+      "key": "PATH",
+      "value": "/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+    },
+    {
+      "key": "LANG",
+      "value": "C.UTF-8"
+    },
+    {
+      "key": "GPG_KEY",
+      "value": "E3FF2839C048B25C084DEBE9B26995E310250568"
+    },
+    {
+      "key": "PYTHON_VERSION",
+      "value": "3.8.5"
+    },
+    {
+      "key": "PYTHON_PIP_VERSION",
+      "value": "20.2.3"
+    },
+    {
+      "key": "PYTHON_GET_PIP_URL",
+      "value": "https://github.com/pypa/get-pip/raw/fa7dc83944936bf09a0e4cb5d5ec852c0d256599/get-pip.py"
+    },
+    {
+      "key": "PYTHON_GET_PIP_SHA256",
+      "value": "6e0bb0a2c2533361d7f297ed547237caf1b7507f197835974c0dd7eba998c53c"
+    },
+    {
+      "key": "LC_ALL",
+      "value": "C.UTF-8"
+    }
+  ]
+}
+```
+
 <br/>
   - Create the NGSI Agent
 <br/>
