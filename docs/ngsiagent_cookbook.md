@@ -168,6 +168,7 @@ For the ping NGSI agent you could get something like this as response:
 
   - Get a template
 <br/>
+
 When you have chosen the image of your NGSI Agents, you can generate a template to create it (**/images/{id}/template**)
 
 
@@ -230,7 +231,7 @@ curl  -H "X-Auth-Token: default"  http://172.17.0.1:8888/api/images/sha256:62087
     ]
 }
 ```
-for the ping examaple, you may get something like this as repsonse:
+For the ping example, you may get something like this as repsonse:
 
 ```
 {
@@ -318,7 +319,70 @@ curl  -X POST -H "X-Auth-Token: default"  http://172.17.0.1:8888/api/ngsiagent -
 }
 EOF
 ```
-For the ping example, we just take the previous response from the template and change the name to '/ping-test'. The result, if everything goes fine, is:
+For the ping example, we just take the previous response from the template and change the name to '/ping-test', and include the ENV variables ORION_HOST (private IP of CORE VM), ORION_SERVICE and ORION_SERVICEPATH.
+
+```
+{
+  "name": "/pingtest",
+  "image": "pixelh2020/pingtest:0.1",
+  "type": "scheduled",
+  "scheduled": "1 * * * *",
+  "datasources": [
+    "urn:pixel:DataSource:Ping"
+  ],
+  "datamodels": [
+    "/Pixel/Ping/schema.json"
+  ],
+  "environment": [
+    {
+      "key": "PATH",
+      "value": "/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+    },
+    {
+      "key": "LANG",
+      "value": "C.UTF-8"
+    },
+    {
+      "key": "GPG_KEY",
+      "value": "E3FF2839C048B25C084DEBE9B26995E310250568"
+    },
+    {
+      "key": "PYTHON_VERSION",
+      "value": "3.8.5"
+    },
+    {
+      "key": "PYTHON_PIP_VERSION",
+      "value": "20.2.3"
+    },
+    {
+      "key": "PYTHON_GET_PIP_URL",
+      "value": "https://github.com/pypa/get-pip/raw/fa7dc83944936bf09a0e4cb5d5ec852c0d256599/get-pip.py"
+    },
+    {
+      "key": "PYTHON_GET_PIP_SHA256",
+      "value": "6e0bb0a2c2533361d7f297ed547237caf1b7507f197835974c0dd7eba998c53c"
+    },
+    {
+      "key": "LC_ALL",
+      "value": "C.UTF-8"
+    },
+    {
+      "key": "ORION_HOST",
+      "value": "10.90.1.53"
+    },
+    {
+      "key": "ORION_SERVICE",
+      "value": "PIXEL"
+    },
+    {
+      "key": "ORION_SERVICEPATH",
+      "value": "/GRSKG"
+    },
+  ]
+}
+```
+
+The result, if everything goes fine, is:
 ```
 {
   "id": "a7754222dd1a79f44fde0345b3ec5dbf5b1d765d62adb7db98fd4ce7aa7a13ce"
