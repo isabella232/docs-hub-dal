@@ -26,6 +26,10 @@ The data models repository must be updated on the platform:
           root@vm-pixel-public:/opt/pixel/Data_Models# GIT_SSL_NO_VERIFY=false git pull 
 * on CORE host : /opt/pixel/Installation/docker/core/update-datarepo.sh
 
+          root@vm-pixel-core:/opt/pixel/Installation# GIT_SSL_NO_VERIFY=false git pull 
+          root@vm-pixel-public:/opt/pixel/Installation/docker/core# ./update-datarepo.sh 
+
+
 ### Data Source URN
 
 Each Data Source is identified with an URN following this syntax ```urn:pixel:DataSource:<LOCODE>:<SourceName>```
