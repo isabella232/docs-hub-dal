@@ -22,6 +22,7 @@ The path of the json schema relative to spec folder will be needed, for exemple 
 
 The data models repository must be updated on the platform:
 * on PUBLIC host : git pull on /opt/pixel/Data_Models
+          root@vm-pixel-public:/opt/pixel/Data_Models# GIT_SSL_NO_VERIFY=false git pull 
 * on CORE host : /opt/pixel/Installation/docker/core/update-datarepo.sh
 
 ### Data Source URN
