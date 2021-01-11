@@ -325,4 +325,17 @@ For the ping example, we just take the previous response from the template and c
 }
 ```
 
+Now you can make a GET request to the **/ngsiagent** and get the available agents. For the ping test the response will be seomething like:
+```
+[
+  {
+    "id": "a7754222dd1a79f44fde0345b3ec5dbf5b1d765d62adb7db98fd4ce7aa7a13ce",
+    "name": "/ping-test",
+    "type": "scheduled",
+    "state": "running",
+    "status": "Up 2 minutes"
+  }
+]
+```
+
 </div>
