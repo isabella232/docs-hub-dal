@@ -136,7 +136,9 @@ The API is not exposed outside the platform, you have to request it directly fro
 Then you can access the [swagger](http://127.0.0.1:8080/api-docs)
 
 In order to be used with the orchestrator, the docker image should be available in the local docker repository. ```docker pull <imagename>````
+For example, for a test ping NGSI agent:
 
+          root@vm-pixel-public:/opt/pixel/Installation# docker pull pixelh2020/pingtest:0.1
 
 You can request the list of available NGSI Agents images already available on the host with an API call:
 
@@ -150,6 +152,18 @@ curl  -H "X-Auth-Token: default"  http://172.17.0.1:8888/api/images
     }        
 ]
 ```
+For the ping NGSI agent you could get something like this as response:
+
+````
+[
+  {
+    "id": "sha256:1fd5e06701c1a171d27aea236d65c9070f2be8add8f67a4d12aa33eee97fc3c4",
+    "tag": "pixelh2020/pingtest:0.1"
+  }
+]
+````
+
+
 <br/>
 
   - Get a template
