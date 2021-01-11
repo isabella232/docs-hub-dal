@@ -282,7 +282,7 @@ for the ping examaple, you may get something like this as repsonse:
 ```
 
 <br/>
-  - Create the NGSI Agent
+  - Create the NGSI Agent (**/ngsiagent**)
 <br/>
 
 Change the name of the agent (it will be the name of the container) and adjust the parameters or let their default values. Be sure that your name matches the given pattern.
@@ -318,4 +318,11 @@ curl  -X POST -H "X-Auth-Token: default"  http://172.17.0.1:8888/api/ngsiagent -
 }
 EOF
 ```
+For the ping example, we just take the previous response from the template and change the name to '/ping-test'. The result, if everything goes fine, is:
+```
+{
+  "id": "a7754222dd1a79f44fde0345b3ec5dbf5b1d765d62adb7db98fd4ce7aa7a13ce"
+}
+```
+
 </div>
