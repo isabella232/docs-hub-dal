@@ -389,17 +389,27 @@ The result, if everything goes fine, is:
 }
 ```
 
-Now you can make a GET request to the **/ngsiagent** and get the available agents. For the ping test the response will be seomething like:
+Now you can make a GET request to the **/ngsiagent** and get the available agents. For the ping test the response will be something like:
 ```
 [
   {
     "id": "a7754222dd1a79f44fde0345b3ec5dbf5b1d765d62adb7db98fd4ce7aa7a13ce",
-    "name": "/ping-test",
+    "name": "/pingtest",
     "type": "scheduled",
-    "state": "running",
-    "status": "Up 2 minutes"
+    "state": "exited",
+    "status": "Exited (0) 44 seconds ago"
   }
 ]
+```
+If you want to check if the information is arriving in Orion, you can just use fro mthe console in the PUBLIC VM a **curl** command:
+
+```
+curl http://10.90.1.53:1026/v2/entities -s -S -H 'Accept: application/json' -H 'Fiware-Service: PIXEL'
+```
+For the ping example, the response will be something like
+
+```
+[{"id":"Ping","type":"Ping","from":{"type":"Text","value":"85f4d7af9e15-172.17.0.2","metadata":{}},"source":{"type":"Text","value":"urn:pixel:DataSource:Ping","metadata":{}},"when":{"type":"Text","value":"2021-01-12T11:01:44+02:00","metadata":{}}}]
 ```
 
 </div>
