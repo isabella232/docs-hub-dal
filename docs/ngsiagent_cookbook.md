@@ -431,7 +431,8 @@ and you should get something like this (Ping example):
 This means that in Kibana (https://admin.grskg.pixel-ports.eu/kibana/app/kibana), you have now a new index called **arh-lts-ping** and you should be able to disckver the data there. In our ping example, you should get something like this
 
 <p align="center">
-<img src="img/kibana1.jpg" alt="Kibana eample" align="center" />
-          
+<img src="img/kibana1.jpg" alt="Kibana eample" align="center" />     
 </p>
+Currently there is only one doc in the Kibana example. This is caused if the susbcription mode refers to **update** (everytime the value is updated in Orion, it is also updated in Elasticsearch, this imposes to include timestamps in the entity ID if you want to have a historic). Now DAL and IH are being enhanced to support an **insert** mode where all values will be stored to have a historic under the same index (here there is no need to include a timestamp in the entity ID).
+
 </div>
