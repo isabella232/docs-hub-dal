@@ -319,7 +319,7 @@ curl  -X POST -H "X-Auth-Token: default"  http://172.17.0.1:8888/api/ngsiagent -
 }
 EOF
 ```
-For the ping example, we just take the previous response from the template and change the name to '/ping-test', and include the ENV variables ORION_HOST (private IP of CORE VM), ORION_SERVICE and ORION_SERVICEPATH.
+For the ping example, we just take the previous response from the template and change the name to '/ping-test', and include the ENV variables: ORION_HOST (private IP of CORE VM). ORION_PORT is not needed (1026 as default), as well as ORION_SERVICE and ORION_SERVICEPATH. These last two were initally considered to be **PIXEL** and **/GRSKG** respectively, but should **not** be included here (nor considered in the NGSI implementation code)
 
 ```
 {
@@ -369,15 +369,7 @@ For the ping example, we just take the previous response from the template and c
     {
       "key": "ORION_HOST",
       "value": "10.90.1.53"
-    },
-    {
-      "key": "ORION_SERVICE",
-      "value": "PIXEL"
-    },
-    {
-      "key": "ORION_SERVICEPATH",
-      "value": "/GRSKG"
-    }
+    }   
   ]
 }
 ```
@@ -401,10 +393,10 @@ Now you can make a GET request to the **/ngsiagent** and get the available agent
   }
 ]
 ```
-If you want to check if the information is arriving in Orion, you can just use fro mthe console in the PUBLIC VM a **curl** command:
+If you want to check if the information is arriving in Orion, you can just use from the console in the PUBLIC VM a **curl** command:
 
 ```
-curl http://10.90.1.53:1026/v2/entities -s -S -H 'Accept: application/json' -H 'Fiware-Service: PIXEL'
+curl http://10.90.1.53:1026/v2/entities -s -S -H 'Accept: application/json' 
 ```
 For the ping example, the response will be something like
 
