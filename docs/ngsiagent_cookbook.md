@@ -403,7 +403,32 @@ curl http://10.90.1.53:1026/v2/entities -s -S -H 'Accept: application/json'
 For the ping example, the response will be something like
 
 ```
-[{"id":"Ping","type":"Ping","from":{"type":"Text","value":"85f4d7af9e15-172.17.0.2","metadata":{}},"source":{"type":"Text","value":"urn:pixel:DataSource:Ping","metadata":{}},"when":{"type":"Text","value":"2021-01-12T11:01:44+02:00","metadata":{}}}]
+[{"id":"Ping","type":"DataModel","schemaUrl":{"type":"string","value":"http://schemas.pixel.internal/Pixel/Ping/schema.json","metadata":{}}},{"id":"urn:pixel:SourceModel:Ping:Ping","type":"SourceModelRelation","model":{"type":"Text","value":"Ping","metadata":{}},"source":{"type":"Text","value":"urn:pixel:DataSource:Ping","metadata":{}}},{"id":"urn:pixel:DataSource:Ping","type":"DataSource","name":{"type":"Text","value":"urn:pixel:DataSource:Ping","metadata":{}}},{"id":"Ping","type":"Ping","from":{"type":"Text","value":"8c1805c53d56-172.17.0.2","metadata":{}},"source":{"type":"Text","value":"urn:pixel:DataSource:Ping","metadata":{}},"when":{"type":"Text","value":"2021-01-17T20:45:53+02:00","metadata":{}}}]
 ```
+You might execute the command every minute and check that the *when* field is being updated.
+
+Now you can check if this information is also getting to the IH. You can first check the subscriptions to Orion
+
+```
+curl http://10.90.1.53:1026/v2/subscriptions -s -S -H 'Accept: application/json' 
+```
+For the ping example, the response will be something like
+
+```
+[{"id":"5ffdc24bc706fae5549fafaa","description":"Information Hub subscription to DataSource notifications.","status":"active","subject":{"entities":[{"idPattern":".*","type":"DataSource"}],"condition":{"attrs":[]}},"notification":{"timesSent":3,"lastNotification":"2021-01-13T11:56:55.00Z","attrs":[],"onlyChangedAttrs":false,"attrsFormat":"normalized","http":{"url":"http://172.28.1.15:9009/DataSource"},"lastSuccess":"2021-01-13T11:56:55.00Z","lastSuccessCode":200}},{"id":"5ffee008c706fae5549fafab","description":"Information Hub subscription to the source urn:pixel:DataSource:Ping.","status":"active","subject":{"entities":[{"idPattern":".*"}],"condition":{"attrs":[],"expression":{"q":"source==urn:pixel:DataSource:Ping"}}},"notification":{"timesSent":5976,"lastNotification":"2021-01-17T18:48:58.00Z","attrs":[],"onlyChangedAttrs":false,"attrsFormat":"normalized","http":{"url":"http://172.28.1.15:9009/urn%3Apixel%3ADataSource%3APing"},"lastSuccess":"2021-01-17T18:48:58.00Z","lastSuccessCode":200}}]
+```
+Now you can query the IH API for the sources
+
+```
+curl http://172.25.1.17:8080/archivingSystem/extractor/v1/sources 
+```
+and you should get something like this (Ping example):
+
+```
+[{"sourceId":"urn:pixel:DataSource:Ping","sourceTypeId":"Ping","indexName":"arh-lts-ping"}]
+```
+
+This means that in Kibana (https://admin.grskg.pixel-ports.eu/kibana/app/kibana), you have now a new index called **arh-lts-ping** and you should be able to disckver the data there. In our ping example, you should get something like this
+
 
 </div>
