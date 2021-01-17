@@ -430,5 +430,8 @@ and you should get something like this (Ping example):
 
 This means that in Kibana (https://admin.grskg.pixel-ports.eu/kibana/app/kibana), you have now a new index called **arh-lts-ping** and you should be able to disckver the data there. In our ping example, you should get something like this
 
-
+<p align="center">
+<img src="img/kibana1.jpg" alt="Kibana eample" align="center" />
+          
+</p>
 </div>
