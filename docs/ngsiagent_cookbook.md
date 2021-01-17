@@ -20,6 +20,8 @@ The Data Models used by the NGSI Agents have to be added to the [PIXEL DataModel
 
 The path of the json schema relative to spec folder will be needed, for exemple ```/Dummies/minimal-schema.json```
 
+For example, for the Pin g example we have the schema at [https://gitpixel.satrdlab.upv.es/iglaub/Data_Models/src/master/specs/Pixel/Ping](https://gitpixel.satrdlab.upv.es/iglaub/Data_Models/src/master/specs/Pixel/Ping). Remember to validate the schema.json (check for JSON syntax errors) before deploying the agent, otherwise any syntax error will cause the DAL orchestrator to claim for (you will only see that by doing **docker logs dal_orchestrator**)
+
 The data models repository must be updated on the platform:
 * on PUBLIC host : git pull on /opt/pixel/Data_Models
 
