@@ -14,13 +14,15 @@ In order to be deployed on a PIXEL Platform using the DAL and to be automaticall
 * The agent should be dockerized with the needed labels
 * The agent should be deployed with the Orchestrator
 
+*Note: We will include here a basic Ping NGSI agent as practical case. Code av ailable at: [https://gitpixel.satrdlab.upv.es/benmomo/ngsi-agents-thpa/src/master/thpa-ping](https://gitpixel.satrdlab.upv.es/benmomo/ngsi-agents-thpa/src/master/thpa-ping)
+
 ### Data Models
 
 The Data Models used by the NGSI Agents have to be added to the [PIXEL DataModel repository](https://gitpixel.satrdlab.upv.es/iglaub/Data_Models.git).
 
 The path of the json schema relative to spec folder will be needed, for exemple ```/Dummies/minimal-schema.json```
 
-For example, for the Ping example we have the schema at [https://gitpixel.satrdlab.upv.es/iglaub/Data_Models/src/master/specs/Pixel/Ping](https://gitpixel.satrdlab.upv.es/iglaub/Data_Models/src/master/specs/Pixel/Ping). Remember to validate the schema.json (check for JSON syntax errors) before deploying the agent, otherwise any syntax error will cause the DAL orchestrator to claim for (you will only see that by doing **docker logs dal_orchestrator**)
+For the Ping example we have the schema at [https://gitpixel.satrdlab.upv.es/iglaub/Data_Models/src/master/specs/Pixel/Ping](https://gitpixel.satrdlab.upv.es/iglaub/Data_Models/src/master/specs/Pixel/Ping). Remember to validate the schema.json (check for JSON syntax errors) before deploying the agent, otherwise any syntax error will cause the DAL orchestrator to claim for (you will only see that by doing **docker logs dal_orchestrator**)
 
 The data models repository must be updated on the platform:
 * on PUBLIC host : git pull on /opt/pixel/Data_Models
