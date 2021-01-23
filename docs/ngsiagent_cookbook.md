@@ -143,7 +143,7 @@ For example, for a test ping NGSI agent:
 
           root@vm-pixel-public:/opt/pixel/Installation# docker pull pixelh2020/pingtest:0.1
 
-You can request the list of available NGSI Agents images already available on the host with an API call (**/images**):
+You can request the list of available NGSI Agents images already available on the host with an API call (**/images in Swagger**):
 
 
 ```
@@ -160,7 +160,7 @@ For the ping NGSI agent you could get something like this as response:
 ````
 [
   {
-    "id": "sha256:081eeee82df7fb0f5526a5eb78028300592f708bc505a4cc50ef7b282b1c8bbc",
+    "id": "sha256:476573a6b213a4e16152dd9cd0ca8a62dbf06c8452e13c17f8bcf9e8e922becc",
     "tag": "pixelh2020/pingtest:0.1"
   }
 ]
@@ -172,7 +172,7 @@ For the ping NGSI agent you could get something like this as response:
   - Get a template
 <br/>
 
-When you have chosen the image of your NGSI Agents, you can generate a template to create it (**/images/{id}/template**)
+When you have chosen the image of your NGSI Agents, you can generate a template to create it (**/images/{id}/template in Swagger**)
 
 
 ```
@@ -241,13 +241,14 @@ For the ping example, you may get something like this as repsonse:
   "name": "/?[a-zA-Z0-9_-]+",
   "image": "pixelh2020/pingtest:0.1",
   "type": "scheduled",
-  "scheduled": "1 * * * *",
+  "scheduled": "* * * * *",
   "datasources": [
     "urn:pixel:DataSource:Ping"
   ],
   "datamodels": [
     "/Pixel/Ping/schema.json"
   ],
+  "mode": "insert",
   "environment": [
     {
       "key": "PATH",
@@ -263,7 +264,7 @@ For the ping example, you may get something like this as repsonse:
     },
     {
       "key": "PYTHON_VERSION",
-      "value": "3.8.5"
+      "value": "3.8.6"
     },
     {
       "key": "PYTHON_PIP_VERSION",
@@ -286,7 +287,7 @@ For the ping example, you may get something like this as repsonse:
 ```
 
 <br/>
-  - Create the NGSI Agent (**/ngsiagent**)
+  - Create the NGSI Agent (**POST /ngsiagent in Swagger**)
 <br/>
 
 Change the name of the agent (it will be the name of the container) and adjust the parameters or let their default values. Be sure that your name matches the given pattern.
@@ -329,13 +330,14 @@ For the ping example, we just take the previous response from the template and c
   "name": "/pingtest",
   "image": "pixelh2020/pingtest:0.1",
   "type": "scheduled",
-  "scheduled": "1 * * * *",
+  "scheduled": "* * * * *",
   "datasources": [
     "urn:pixel:DataSource:Ping"
   ],
   "datamodels": [
     "/Pixel/Ping/schema.json"
   ],
+  "mode": "insert",
   "environment": [
     {
       "key": "PATH",
@@ -351,7 +353,7 @@ For the ping example, we just take the previous response from the template and c
     },
     {
       "key": "PYTHON_VERSION",
-      "value": "3.8.5"
+      "value": "3.8.6"
     },
     {
       "key": "PYTHON_PIP_VERSION",
@@ -372,7 +374,7 @@ For the ping example, we just take the previous response from the template and c
     {
       "key": "ORION_HOST",
       "value": "10.90.1.53"
-    }   
+    }
   ]
 }
 ```
@@ -380,7 +382,7 @@ For the ping example, we just take the previous response from the template and c
 The result, if everything goes fine, is:
 ```
 {
-  "id": "e37609e4dddd20a9d18a5e6feee0fd00590787ba934e4d6b44f40b054ca7bf0c"
+  "id": "93d876b1b34303754fc67030effcfa54bae046a3af39b69b30a7cd486ca73d42"
 }
 ```
 
@@ -388,11 +390,11 @@ Now you can make a GET request to the **/ngsiagent** and get the available agent
 ```
 [
   {
-    "id": "a7754222dd1a79f44fde0345b3ec5dbf5b1d765d62adb7db98fd4ce7aa7a13ce",
+    "id": "93d876b1b34303754fc67030effcfa54bae046a3af39b69b30a7cd486ca73d42",
     "name": "/pingtest",
     "type": "scheduled",
     "state": "exited",
-    "status": "Exited (0) 44 seconds ago"
+    "status": "Exited (0) 30 seconds ago"
   }
 ]
 ```
@@ -404,21 +406,149 @@ curl http://10.90.1.53:1026/v2/entities -s -S -H 'Accept: application/json'
 For the ping example, the response will be something like
 
 ```
-[{"id":"Ping","type":"DataModel","schemaUrl":{"type":"string","value":"http://schemas.pixel.internal/Pixel/Ping/schema.json","metadata":{}}},{"id":"urn:pixel:SourceModel:Ping:Ping","type":"SourceModelRelation","model":{"type":"Text","value":"Ping","metadata":{}},"source":{"type":"Text","value":"urn:pixel:DataSource:Ping","metadata":{}}},{"id":"urn:pixel:DataSource:Ping","type":"DataSource","name":{"type":"Text","value":"urn:pixel:DataSource:Ping","metadata":{}}},{"id":"Ping","type":"Ping","from":{"type":"Text","value":"8c1805c53d56-172.17.0.2","metadata":{}},"source":{"type":"Text","value":"urn:pixel:DataSource:Ping","metadata":{}},"when":{"type":"Text","value":"2021-01-17T20:45:53+02:00","metadata":{}}}]
+[{"id":"Ping","type":"DataModel","schemaUrl":{"type":"string","value":"http://schemas.pixel.internal/Pixel/Ping/schema.json","metadata":{}}},{"id":"urn:pixel:SourceModel:Ping:Ping","type":"SourceModelRelation","model":{"type":"Text","value":"Ping","metadata":{}},"source":{"type":"Text","value":"urn:pixel:DataSource:Ping","metadata":{}}},{"id":"PingTest","type":"Ping","from":{"type":"Text","value":"93d876b1b343-172.42.1.3","metadata":{}},"source":{"type":"Text","value":"urn:pixel:DataSource:Ping","metadata":{}},"when":{"type":"Text","value":"2021-01-23T19:28:18+02:00","metadata":{}}},{"id":"urn:pixel:DataSource:Ping","type":"DataSource","name":{"type":"Text","value":"urn:pixel:DataSource:Ping","metadata":{}},"same-id-mode":{"type":"Text","value":"insert","metadata":{}}}]
 ```
+If you prefer a better visual output you might install jq (**sudo apt-get install jq**) and then make the same query with this tool
+
+```
+curl http://10.90.1.53:1026/v2/entities -s -S -H 'Accept: application/json' | jq
+```
+So you will get something like
+
+```
+[
+  {
+    "id": "Ping",
+    "type": "DataModel",
+    "schemaUrl": {
+      "type": "string",
+      "value": "http://schemas.pixel.internal/Pixel/Ping/schema.json",
+      "metadata": {}
+    }
+  },
+  {
+    "id": "urn:pixel:SourceModel:Ping:Ping",
+    "type": "SourceModelRelation",
+    "model": {
+      "type": "Text",
+      "value": "Ping",
+      "metadata": {}
+    },
+    "source": {
+      "type": "Text",
+      "value": "urn:pixel:DataSource:Ping",
+      "metadata": {}
+    }
+  },
+  {
+    "id": "PingTest",
+    "type": "Ping",
+    "from": {
+      "type": "Text",
+      "value": "93d876b1b343-172.42.1.3",
+      "metadata": {}
+    },
+    "source": {
+      "type": "Text",
+      "value": "urn:pixel:DataSource:Ping",
+      "metadata": {}
+    },
+    "when": {
+      "type": "Text",
+      "value": "2021-01-23T19:28:18+02:00",
+      "metadata": {}
+    }
+  },
+  {
+    "id": "urn:pixel:DataSource:Ping",
+    "type": "DataSource",
+    "name": {
+      "type": "Text",
+      "value": "urn:pixel:DataSource:Ping",
+      "metadata": {}
+    },
+    "same-id-mode": {
+      "type": "Text",
+      "value": "insert",
+      "metadata": {}
+    }
+  }
+]
+```
+*Note*: It is important that the 'id' of the data entity (PingTest) is different than the 'id' of the DataModel entity (Ping). Otherwise, we might have two entities with the same id (possible for Orion unless the 'type' field is different), but might cause inconsistencies in some IH components. 
+
 You might execute the command every minute and check that the *when* field is being updated.
 
-Now you can check if this information is also getting to the IH. You can first check the subscriptions to Orion
+Now you can check if this information is also getting to the IH. You can first check the subscriptions to Orion:
 
 ```
-curl http://10.90.1.53:1026/v2/subscriptions -s -S -H 'Accept: application/json' 
+curl http://10.90.1.53:1026/v2/subscriptions -s -S -H 'Accept: application/json' | jq
 ```
 For the ping example, the response will be something like
 
 ```
-[{"id":"5ffdc24bc706fae5549fafaa","description":"Information Hub subscription to DataSource notifications.","status":"active","subject":{"entities":[{"idPattern":".*","type":"DataSource"}],"condition":{"attrs":[]}},"notification":{"timesSent":3,"lastNotification":"2021-01-13T11:56:55.00Z","attrs":[],"onlyChangedAttrs":false,"attrsFormat":"normalized","http":{"url":"http://172.28.1.15:9009/DataSource"},"lastSuccess":"2021-01-13T11:56:55.00Z","lastSuccessCode":200}},{"id":"5ffee008c706fae5549fafab","description":"Information Hub subscription to the source urn:pixel:DataSource:Ping.","status":"active","subject":{"entities":[{"idPattern":".*"}],"condition":{"attrs":[],"expression":{"q":"source==urn:pixel:DataSource:Ping"}}},"notification":{"timesSent":5976,"lastNotification":"2021-01-17T18:48:58.00Z","attrs":[],"onlyChangedAttrs":false,"attrsFormat":"normalized","http":{"url":"http://172.28.1.15:9009/urn%3Apixel%3ADataSource%3APing"},"lastSuccess":"2021-01-17T18:48:58.00Z","lastSuccessCode":200}}]
+[
+  {
+    "id": "6006a31653cbffafa7cd7304",
+    "description": "Information Hub subscription to DataSource notifications.",
+    "status": "active",
+    "subject": {
+      "entities": [
+        {
+          "idPattern": ".*",
+          "type": "DataSource"
+        }
+      ],
+      "condition": {
+        "attrs": []
+      }
+    },
+    "notification": {
+      "timesSent": 4,
+      "lastNotification": "2021-01-23T17:26:38.00Z",
+      "attrs": [],
+      "onlyChangedAttrs": false,
+      "attrsFormat": "normalized",
+      "http": {
+        "url": "http://172.28.1.15:9009/DataSource"
+      },
+      "lastSuccess": "2021-01-23T17:26:38.00Z",
+      "lastSuccessCode": 200
+    }
+  },
+  {
+    "id": "6006ac5a53cbffafa7cd7305",
+    "description": "Information Hub subscription to the source urn:pixel:DataSource:Ping.",
+    "status": "active",
+    "subject": {
+      "entities": [
+        {
+          "idPattern": ".*"
+        }
+      ],
+      "condition": {
+        "attrs": [],
+        "expression": {
+          "q": "source==urn:pixel:DataSource:Ping"
+        }
+      }
+    },
+    "notification": {
+      "timesSent": 6205,
+      "lastNotification": "2021-01-23T17:34:20.00Z",
+      "attrs": [],
+      "onlyChangedAttrs": false,
+      "attrsFormat": "normalized",
+      "http": {
+        "url": "http://172.28.1.15:9009/urn%3Apixel%3ADataSource%3APing"
+      },
+      "lastSuccess": "2021-01-23T17:34:20.00Z",
+      "lastSuccessCode": 200
+    }
+  }
+]
 ```
-Now you can query the IH API for the sources
+Now you can query the IH API for the sources (from the CORE-VM)
 
 ```
 curl http://172.25.1.17:8080/archivingSystem/extractor/v1/sources 
@@ -426,14 +556,21 @@ curl http://172.25.1.17:8080/archivingSystem/extractor/v1/sources
 and you should get something like this (Ping example):
 
 ```
-[{"sourceId":"urn:pixel:DataSource:Ping","sourceTypeId":"Ping","indexName":"arh-lts-ping"}]
+[
+  {
+    "sourceId": "urn:pixel:DataSource:Ping",
+    "sourceTypeId": "Ping",
+    "indexName": "arh-lts-ping"
+  }
+]
 ```
-
-This means that in Kibana (https://admin.grskg.pixel-ports.eu/kibana/app/kibana), you have now a new index called **arh-lts-ping** and you should be able to disckver the data there. In our ping example, you should get something like this
+We can also check the data in Kibana. The URL depends on your site. For THPA it is [(https://admin.grskg.pixel-ports.eu/kibana/app/kibana](https://admin.grskg.pixel-ports.eu/kibana/app/kibana)
+user: pixel
+pass= look in public VM /opt/pixel/Installation/docker/public/secrets/frontrp.admin.password
+So in Kibana you have now a new index called **arh-lts-ping** and you should be able to discover the data there. In our ping example, you should get something like this:
 
 <p align="center">
 <img src="img/kibana1.jpg" alt="Kibana eample" align="center" />     
 </p>
-Currently there is only one doc in the Kibana example. This is caused if the susbcription mode refers to **update** (everytime the value is updated in Orion, it is also updated in Elasticsearch, this imposes to include timestamps in the entity ID if you want to have a historic). Now DAL and IH are being enhanced to support an **insert** mode where all values will be stored to have a historic under the same index (here there is no need to include a timestamp in the entity ID).
 
 </div>
