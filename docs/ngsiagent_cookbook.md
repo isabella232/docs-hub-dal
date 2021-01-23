@@ -57,6 +57,7 @@ You also can create those objects manually, or using the ```POST register``` api
 In order to be identified and imported by the DAL Orchestrator the NGSI Agent have to fulfill several requirements using DOCKER LABEL :
 
 #### Labels for all agents
+  - **ngsiagent.mode="insert"**: 'update' is the default mode, and will provoke that the IH subscriber makes an update in Elastic. With 'insert', the IH subscriber makes an insert in Elasticsearch. The latter is the typical mode where an NGSI agent uses the same 'id' for every executions (no datetime timestamp), and the historic is then stored in Elastic
   - **ngsiagent="pixel"**: this is the key label to be identified as a NGSI Agent
   - **ngsiagent.type="daemon"**: define the type of NGSI Agent daemon, scheduled or manual
   - **ngsiagent.datasources="[\"urn:pixel:DataSource:dummies\"]"**: this label provides the name of the datasource managed by this agent
