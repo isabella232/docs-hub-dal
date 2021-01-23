@@ -570,7 +570,7 @@ pass= look in public VM /opt/pixel/Installation/docker/public/secrets/frontrp.ad
 So in Kibana you have now a new index called **arh-lts-ping** and you should be able to discover the data there. In our ping example, you should get something like this:
 
 <p align="center">
-<img src="img/kibana1.jpg" alt="Kibana eample" align="center" />     
+<img src="img/kibana.jpg" alt="Kibana eample" align="center" />     
 </p>
 
 </div>
