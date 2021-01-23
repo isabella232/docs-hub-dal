@@ -14,7 +14,7 @@ In order to be deployed on a PIXEL Platform using the DAL and to be automaticall
 * The agent should be dockerized with the needed labels
 * The agent should be deployed with the Orchestrator
 
-*Note: We will include here a basic Ping NGSI agent as practical case. Code av ailable at: [https://gitpixel.satrdlab.upv.es/benmomo/ngsi-agents-thpa/src/master/thpa-ping](https://gitpixel.satrdlab.upv.es/benmomo/ngsi-agents-thpa/src/master/thpa-ping)
+*Note: We will include here a basic Ping NGSI agent as practical case. Code av ailable at: [https://gitpixel.satrdlab.upv.es/benmomo/ngsi-agents-thpa/src/master/thpa-ping](https://gitpixel.satrdlab.upv.es/benmomo/ngsi-agents-thpa/src/master/thpa-ping)*
 
 ### Data Models
 
