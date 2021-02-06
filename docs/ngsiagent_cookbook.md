@@ -2,6 +2,8 @@
 
 You can access the [PIXEL End 2 End tests](./pixel-e2e.md) with simple agents and tests.
 
+*Note: The previos tests are based on 'ping' NGSI Agents in mode 'update' and cover the path Orion-IH. In the following we will also show another 'ping' NGSI Agent in mode 'insert'. This is also associated with a 'pingcount' model able to read data from IH and write results in Elastic, covering a whole end-to-end scenario*
+
 ## Requirements
 <div align="justify">
 
@@ -14,7 +16,7 @@ In order to be deployed on a PIXEL Platform using the DAL and to be automaticall
 * The agent should be dockerized with the needed labels
 * The agent should be deployed with the Orchestrator
 
-*Note: We will include here a basic Ping NGSI agent as practical case. Code av ailable at: [https://gitpixel.satrdlab.upv.es/benmomo/ngsi-agents-thpa/src/master/thpa-ping](https://gitpixel.satrdlab.upv.es/benmomo/ngsi-agents-thpa/src/master/thpa-ping)*
+*Note: We will include here a basic Ping NGSI agent as practical case. Code available at: [https://gitpixel.satrdlab.upv.es/benmomo/ngsi-agents-thpa/src/master/thpa-ping](https://gitpixel.satrdlab.upv.es/benmomo/ngsi-agents-thpa/src/master/thpa-ping)*
 
 ### Data Models
 
