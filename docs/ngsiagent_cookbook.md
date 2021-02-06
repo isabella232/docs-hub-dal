@@ -20,7 +20,7 @@ In order to be deployed on a PIXEL Platform using the DAL and to be automaticall
 
 ### Data Models
 
-The Data Models used by the NGSI Agents have to be added to the [PIXEL DataModel repository](https://gitpixel.satrdlab.upv.es/iglaub/Data_Models.git).
+The Data Models used by the NGSI Agents have to be added to the [PIXEL DataModel repository](https://gitpixel.satrdlab.upv.es/iglaub/Data_Models.git). The specific ones for PIXEL should be placed under the *specs/Pixel* folder.
 
 The path of the json schema relative to spec folder will be needed, for exemple ```/Dummies/minimal-schema.json```
 
