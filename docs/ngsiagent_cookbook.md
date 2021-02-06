@@ -2,7 +2,7 @@
 
 You can access the [PIXEL End 2 End tests](./pixel-e2e.md) with simple agents and tests.
 
-*Note: The previos tests are based on 'ping' NGSI Agents in mode 'update' and cover the path Orion-IH. In the following we will also show another 'ping' NGSI Agent in mode 'insert'. This is also associated with a 'pingcount' model able to read data from IH and write results in Elastic, covering a whole end-to-end scenario*
+*Note: The previous tests are based on 'ping' NGSI Agents in mode 'update' and cover the path Orion-IH. In the following, we will also use another 'ping' NGSI Agent in mode 'insert'. This is also associated with a 'pingcount' model able to read data from IH and write results in Elastic, covering a whole end-to-end scenario*
 
 ## Requirements
 <div align="justify">
