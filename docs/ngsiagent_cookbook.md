@@ -34,7 +34,20 @@ The data models repository must be updated on the platform:
 
           root@vm-pixel-core:/opt/pixel/Installation# GIT_SSL_NO_VERIFY=false git pull 
           root@vm-pixel-core:/opt/pixel/Installation/docker/core# ./update-datarepo.sh 
-
+          
+   Note: Sometimes the *update-datarepo.sh* does not correctly update the repo. To check this, just connect to the datarepo container on the CORE host:
+   
+           root@vm-pixel-core:/opt/pixel/Installation# docker exec -it datarepo /bin/bash
+           root@datarepo# ls /opt/pixel/datamodels/specs/Pixel
+   
+   If your new Datamodel is not there, then do the following in CORE host and recheck again:
+         
+          root@vm-pixel-core:/opt/pixel/Installation# docker stop datarepo
+          root@vm-pixel-core:/opt/pixel/Installation# docker rm datarepo
+          root@vm-pixel-core:/opt/pixel/Installation# docker rmi datarepo
+          root@vm-pixel-core:/opt/pixel/Installation# ./install.sh
+          
+          
 
 ### Data Source URN
 
