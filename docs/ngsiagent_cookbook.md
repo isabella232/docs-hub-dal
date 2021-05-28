@@ -88,7 +88,7 @@ For example for the data model TideSensorObserved the label should be set like t
   - **ngsiagent.external.path:*** the base path of the API configured in the proxy to expose the agent
 
 #### Labels for scheduled agents
-  - **ngsiagent.scheduled**: the frequency to run the agent (CRON format)
+  - **ngsiagent.scheduled**: the frequency to run the agent (CRON format). *Note*: the last level (year) is not handled by the DAL
 ```
 * * * * * *
 | | | | | | 
